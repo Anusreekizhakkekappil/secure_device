@@ -104,11 +104,11 @@ app.post('/devices', function(req, res) {
 //login validation
 
 app.post('/login', function(req, res) {
-    var name = req.body.username;
+    var email = req.body.email;
     var password = req.body.password;
     //console.log(req.body);
 
-    Secure.findOne({ name: name, password: password }, function(err, document) {
+    Secure.findOne({ email: email, password: password }, function(err, document) {
         console.log(document);
         if (err) {
             console.log("Login Failed");
