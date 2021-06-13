@@ -6,9 +6,9 @@ var bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const { stringify } = require("querystring");
 
-const loginAuth = require("./public/controller/authCon.js");
-const addDev = require("./public/db/addDevice")
-const { decodeBase64 } = require("bcryptjs");
+//const loginAuth = require("./public/controller/authCon.js");
+//const addDev = require("./public/db/addDevice")
+//const { decodeBase64 } = require("bcryptjs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -39,6 +39,7 @@ app.get("/deviceEntry", function(req, res) {
     res.sendFile(__dirname + "/public/device.html")
 })
 app.get("/devices", function(req, res) {
+    n
     res.sendFile(__dirname + "/public/showDevice.html")
 })
 app.post("/", function(req, res) {
@@ -80,7 +81,7 @@ app.post('/devices', function(req, res) {
         Device.find({ email: email }, function(err, document) {
             console.log(document);
             if (err) {
-                console.log("Login Failed");
+                console.log("Login Failed!");
             } else {
                 if (document) {
                     {
