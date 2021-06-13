@@ -1,12 +1,14 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-    <title> Login Form</title>
+    <title> Add Device</title>
 
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 
 <body>
@@ -22,21 +24,15 @@
 
             <div class="col-md-6 main">
 
-                <form action="/login" method="post">
+                <form action="http://localhost:8080/device" method="post">
 
-                    <h1> Login Form </h1>
+                    <h1> Add Device </h1>
 
+                    <input class="box" type="text" name="devicename" id="devicename" placeholder="Device Name" required /><br>
 
-
-                    <input class="box" type="email" name="email" id="email" placeholder="E-Mail " required /><br>
-
-                    <input class="box" type="password" name="password" id="password" placeholder="Password " required/><br>
-
+                    <input class="box" type="text" name="ip" id="ip" placeholder="IP Number " required/><br>
                     <br>
-                    <input type="submit" id="submitDetails" align="center" name="submitDetails" value="Submit"><br>
-
-                    <p class="login" align="center"><a href="registration.html">Register</p>
-
+                    <input type="submit" id="submitDevice" name="submitDevice" value="Submit" /><br>
 
                 </form>
 
@@ -47,11 +43,7 @@
             </div>
 
         </div>
-    </div>           
-
-      
-    
-
+    </div>
 </body>
 
 </html>
