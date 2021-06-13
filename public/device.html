@@ -24,15 +24,21 @@
 
             <div class="col-md-6 main">
 
-                <form action="http://localhost:8080/device" method="post">
+                <form action="/deviceEntry" method="POST">
 
                     <h1> Add Device </h1>
+
+                    <input class="box" type="text" name="email" id="email" placeholder="Email" required /><br>
+
 
                     <input class="box" type="text" name="devicename" id="devicename" placeholder="Device Name" required /><br>
 
                     <input class="box" type="text" name="ip" id="ip" placeholder="IP Number " required/><br>
                     <br>
                     <input type="submit" id="submitDevice" name="submitDevice" value="Submit" /><br>
+
+                    <br>
+                    <p class="entry" align="center"><a href="showDevice.html">Show Devices</p><br>
 
                 </form>
 

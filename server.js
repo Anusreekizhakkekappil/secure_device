@@ -38,6 +38,9 @@ app.get("/login", function(req, res) {
 app.get("/deviceEntry", function(req, res) {
     res.sendFile(__dirname + "/public/device.html")
 })
+app.get("/devices", function(req, res) {
+    res.sendFile(__dirname + "/public/showDevice.html")
+})
 app.post("/", function(req, res) {
     console.log(req);
     let newSecure = new Secure({
@@ -50,9 +53,87 @@ app.post("/", function(req, res) {
     res.redirect('/');
 })
 
-app.get("/device", function(req, res) {
-    res.sendFile(__dirname + "/public/device.html")
+//Devices
+const deviceSchema = {
+    email: String,
+    device: String,
+    IP: Number
+}
+
+const Device = mongoose.model("Device", deviceSchema);
+
+app.post("/deviceEntry", function(req, res) {
+    console.log(req.body);
+    let newDevice = new Device({
+        email: req.body.email,
+        device: req.body.devicename,
+        IP: req.body.ip
+    });
+    newDevice.save();
+    res.redirect('/deviceEntry');
 })
+
+app.post('/devices', function(req, res) {
+        var email = req.body.email;
+        //console.log(req.body);
+
+        Device.find({ email: email }, function(err, document) {
+            console.log(document);
+            if (err) {
+                console.log("Login Failed");
+            } else {
+                if (document) {
+                    {
+
+                        console.log(document);
+                        res.jsonp({ document })
+                            //res.redirect('/devices');
+                    }
+                } else {
+                    console.log("data Not found");
+                    res.jsonp({ message: "no device found" })
+                        //res.redirect('/deviceEntry');
+                }
+            }
+        })
+
+    })
+    //Devices
+
+//login validation
+
+app.post('/login', function(req, res) {
+    var name = req.body.username;
+    var password = req.body.password;
+    //console.log(req.body);
+
+    Secure.findOne({ name: name, password: password }, function(err, document) {
+        console.log(document);
+        if (err) {
+            console.log("Login Failed");
+        } else {
+            if (document) {
+                {
+                    if (document._id) {
+                        //console.log("Login Successful");
+                        res.redirect('/deviceEntry');
+                    } else {
+                        // console.log("User Not found");
+                        //res.jsonp({success : false})
+                        res.redirect('/login');
+                    }
+                }
+            } else {
+                // console.log("User Not found");
+                //res.jsonp({success : false})
+                res.redirect('/login');
+            }
+        }
+    })
+
+})
+
+//login validation
 
 /*app.post("/public/device.html", function(req, res) {
         db.devices.insertOne({
@@ -84,8 +165,8 @@ app.get("/device", function(req, res) {
 //login validation
 
 //app.use('/api', loginAuth);
-app.get('/public/db/addDevice.js'.router);
-app.post(router);
+//app.get('/public/db/addDevice.js'.router);
+//app.post(router);
 
 var port = process.env.PORT || 8080;
 

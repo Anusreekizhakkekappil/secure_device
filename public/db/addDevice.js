@@ -1,11 +1,11 @@
-let express = require("express");
+/*let express = require("express");
 const app = express();
 const mongoose = require('mongoose');
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-mongoose.connect("mongodb+srv://anu:root@cluster0.ymq1k.mongodb.net/device", { useNewUrlParser: true }, { useUnifiedTopology: true })
+//mongoose.connect("mongodb+srv://anu:root@cluster0.ymq1k.mongodb.net/device", { useNewUrlParser: true }, { useUnifiedTopology: true })
 
 app.get("/device", function(req, res) {
     res.sendFile(__dirname + "/public/device.html")
@@ -28,4 +28,4 @@ app.post("/public/device.html", function(req, res) {
         newDevice.save();
         res.redirect("/public/device.html");
     })
-    //Devices
+    //Devices*/
