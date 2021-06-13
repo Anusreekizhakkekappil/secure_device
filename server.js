@@ -1,9 +1,14 @@
 let express = require("express");
 const app = express();
+var router = express.Router();
 
 var bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const { stringify } = require("querystring");
+
+const loginAuth = require("./public/controller/authCon.js");
+const addDev = require("./public/db/addDevice")
+const { decodeBase64 } = require("bcryptjs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -27,8 +32,14 @@ const Secure = mongoose.model("Secure", secureSchema);
 app.get("/", function(req, res) {
     res.sendFile(__dirname + "/public/registration.html")
 })
-
+app.get("/login", function(req, res) {
+    res.sendFile(__dirname + "/public/index.html")
+})
+app.get("/deviceEntry", function(req, res) {
+    res.sendFile(__dirname + "/public/device.html")
+})
 app.post("/", function(req, res) {
+    console.log(req);
     let newSecure = new Secure({
         name: req.body.name,
         email: req.body.email,
@@ -39,6 +50,42 @@ app.post("/", function(req, res) {
     res.redirect('/');
 })
 
+app.get("/device", function(req, res) {
+    res.sendFile(__dirname + "/public/device.html")
+})
+
+/*app.post("/public/device.html", function(req, res) {
+        db.devices.insertOne({
+            device: req.body.devicename,
+            ip: req.body.ip
+        })
+    })*/
+//Devices
+
+
+//login validation
+/*app.post('/login', function(req, res) {
+    var name = req.body.username; 
+    var password = req.body.password;
+    console.log(req);
+    User.findOne({ $or: [{ name: name }, { password: password }] })
+        .then(User => {
+            if (User) {
+                console.log("Successful");
+            } else {
+
+                console.log("No user found!");
+
+            }
+        })
+
+})*/
+
+//login validation
+
+//app.use('/api', loginAuth);
+app.get('/public/db/addDevice.js'.router);
+app.post(router);
 
 var port = process.env.PORT || 8080;
 

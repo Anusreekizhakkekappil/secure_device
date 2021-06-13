@@ -20,6 +20,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/IBM-Bluemix/bluemix-hello-node.git"
-  }
+    "url": "git+https://github.com/IBM-Bluemix/bluemix-hello-node.git"
+  },
+  "description": "Hello by Alessio:",
+  "bugs": {
+    "url": "https://github.com/IBM-Bluemix/bluemix-hello-node/issues"
+  },
+  "homepage": "https://github.com/IBM-Bluemix/bluemix-hello-node#readme",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC"
 }
